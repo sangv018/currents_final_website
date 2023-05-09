@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title> Generative Books Website A</title>
+        <link rel="stylesheet" href="styleA.css">
+        <link rel="stylesheet" href="javaA.js">
+
+        <style>
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                grid-gap: 10px;
+            }
+            img {
+                width: 100%;
+                height: auto;
+            }
+        </style>
+        <script>
+            var counter = 2; // Initialize the counter variable
+            var intervalId = null; // Initialize the interval ID variable
+            
+            function addImage() {
+                if (counter<=12) {
+                 var img = document.createElement("img");
+                 console.log(counter.toString());
+                 img.src = "./map-images" + counter.toString() + ".jpg";
+                //  img.id = "img" + counter;
+                 var grid = document.getElementById("grid");
+                 grid.appendChild(img);
+                counter++;
+                }
+                else {
+                    counter = 2;
+                }
+                // var img = document.createElement("img");
+                // img.src = "/Users/virajinisanghai/Desktop/PARSONS/spring 2023/currents/website/bookA/map-images1.jpg";
+                // var grid = document.getElementById("grid");
+                // grid.appendChild(img);
+                // counter++;
+                // img.id = "img" + counter; // Give each image element a unique ID
+            }
+            
+            function startRecurring() {
+                if (intervalId === null) { // Check if interval has not been started yet
+                    intervalId = setInterval(addImage, 1000); // Add a new image every 5 seconds
+                }
+            }
+            
+            function stopRecurring() {
+                clearInterval(intervalId);
+                intervalId = null;
+            }
+        </script>
+    </head>
+
+    <body>
+        <div>
+            <a class="back" href="../about.html">→</a>
+        </div>
+            <h1>40°4 N 73°5W Book Grid - Recurring</h1>
+            <!-- <p>Click the button to start adding images:</p> -->
+            <button class="button button1" onclick="startRecurring()">Start</button>
+            <button class="button button1" onclick="stopRecurring()">Stop</button>
+            <div class="grid" id="grid"></div>
+        
+    </body>
+</html>
